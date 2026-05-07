@@ -1,0 +1,30 @@
+ order_id |  full_name  |         order_date         |  status   | total_amount 
+----------+-------------+----------------------------+-----------+--------------
+        1 | Alice Smith | 2026-05-02 11:54:21.522268 | completed |     83000.00
+        2 | Bob Johnson | 2026-05-02 11:54:21.522268 | completed |      4000.00
+        3 | Alice Smith | 2026-05-02 11:54:21.522268 | pending   |      1500.00
+(3 rows)
+
+       category        | total_sold | total_revenue 
+-----------------------+------------+---------------
+ Р­Р»РµРєС‚СЂРѕРЅРёРєР° |          5 |      81000.00
+(1 row)
+
+ user_id |  full_name  | total_spent 
+---------+-------------+-------------
+       1 | Alice Smith |    84500.00
+       2 | Bob Johnson |     4000.00
+(2 rows)
+
+                                               QUERY PLAN                                                
+---------------------------------------------------------------------------------------------------------
+ Seq Scan on order_items  (cost=0.00..1.07 rows=1 width=32) (actual time=0.005..0.006 rows=3.00 loops=1)
+   Filter: (order_id = 1)
+   Rows Removed by Filter: 3
+   Buffers: shared hit=1
+ Planning:
+   Buffers: shared hit=2
+ Planning Time: 0.058 ms
+ Execution Time: 0.016 ms
+(8 rows)
+
